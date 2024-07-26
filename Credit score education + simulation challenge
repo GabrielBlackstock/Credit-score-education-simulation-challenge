@@ -1,0 +1,316 @@
+# Excellent credit score challenege
+
+name = input("Hello, welcome to the credit score simulator. What is your name?\n")
+print(f"Welcome {name}, your objective is to get your credit score to excellent within the timeframe.")
+ready = input("Are you ready?\n")
+new_ready = ready.lower()
+
+if new_ready == 'yes':
+  print("Let's go")
+
+credit_score = 0 # Set credit score to 0
+
+def credit_question():  # Credit score function and loop
+  while True:
+    credit_question = input("Do you know what a credit score is? (Yes / No) \n").strip().lower()
+    if credit_question == "yes":
+      print("Perfect, we'll move on")
+      print()
+      break
+    elif credit_question == "no":
+      print("A credit score is a numerical expression based on a level analysis of a person's credit files, to represent the creditworthiness of an individual. ")
+      print()
+      break
+    else:
+      print("Invalid input. Please select yes or no.")
+
+credit_question = credit_question() # Call credit score function
+
+print("Now you will be provided with information on how to improve your credit score.") # Pre financial education
+print()
+
+# Financial education code and quiz
+print("Several types of payments and actions can contribute positively or negatively to a credit score")
+print()
+print("1. Credit Card Payments: Paying your credit card bills on time is crucial. Late payments can significantly lower your credit score, while consistent on-time payments help improve it.")
+print()
+print("2. Loan Payments (Personal loans, vehicle loans, mortgages.): Paying your credit card bills on time is crucial. Late payments can significantly lower your credit score, while consistent on-time payments help improve it.") 
+print()
+print("3. Utilities - Traditionally these payments don't impact your credit score unless you fail to make payment and a collection agency assumes the debt.")
+print()
+print("4. Mobile Phone Contracts, Internet Bills -  Paying your phone and internet bills on time is crucial. Late payments can significantly lower your credit score, while consistent on-time payments help improve it")
+print()
+print("5. Registering to vote and maintaining your address helps to build your credit score.")
+print() 
+print("It's time for a little quiz to test your knowledge.")
+print()
+
+# Pre simulation quiz
+def credit_quiz1a():  # Credit score function, loop and quiz
+  while True:
+    credit_quiz = input("1. Will late payments negatively impact your credit score? (Yes / No) \n").strip().lower()
+    if credit_quiz == "yes":
+      print("Correct.")
+      print()
+      break
+    elif credit_quiz == "no":
+      print("Incorrect. Late payments will negatively impact your credit score. Please try again. ")
+      print()
+    else:
+      print("Invalid input. Please select yes or no.")
+
+# Second pre simulation quiz
+def credit_quiz_2a(): 
+  while True:
+    print("Which of the following types of payments directly affect your credit score if paid late?")
+    print('A. Credit Card payments')
+    print('B. Loan payments')
+    print('C. Mobile Phone Contracts & Internet Bills')
+    print('D. All of the above')
+
+    credit_quiz_2 = input().strip() # Call input then strip and lowercase it
+
+   
+    if credit_quiz_2 == "A":
+      print("Incorrect. Please try again") # Incorrect answer
+    elif credit_quiz_2 == "B":
+      print("Incorrect. Please try again") # Incorrect answer
+    elif credit_quiz_2 == "C":
+      print("Incorrect. Please try again") # Incorrect answer
+    elif credit_quiz_2 == "D":
+      print("Correct. Well done")
+      break
+    else:
+      print("Invalid input. Please select a valid option.") # ValueError
+
+credit_quiz_2 = credit_quiz_2a()
+
+# Tell user their starting credit score
+print("Your credit score is currently 0. We will now start the simulation where you have the opportunity to improve your credit score.")
+
+# Simulation scenario 1
+def scenario_1a():  
+  while True:
+    credit_quiz = input("1. There is an election coming up soon and you want to vote. Do you choose to add register to vote using your home address?").strip().lower()
+    if credit_quiz == "yes":
+      global credit_score
+      credit_score += 200 # Add 100 to credit score
+      print(f"Congratulations, your credit score is now {credit_score}.")
+      print()
+      break
+    elif credit_quiz == "no":
+      print(f" Your credit score has remained the same at {credit_score}.")
+      break
+    else:
+      print("Invalid input. Please select yes or no.")
+
+# Simulation scenario 2
+
+def scenario_2a():  
+  while True:
+    credit_quiz = input("2. You've just started a new job, and your phone bill is £50. How do you want to handle the payment? (Pay / Let parents pay)").strip().lower()
+    if credit_quiz == "pay":
+      global credit_score
+      credit_score += 200 # Add 100 to credit score
+      print(f"Congratulations, your credit score is now {credit_score}.")
+      print("Paying your phone bill yourself shows financial responsibility, positively impacting your credit score.")
+      print()
+      break
+    elif credit_quiz == "let parents pay":
+      print(f" Your credit score is {credit_score}.")
+      print("Letting parents pay may not build your credit history, keeping your credit score unchanged.")
+      break
+    else:
+      print("Invalid input. Please select one of the options")
+
+
+scenario_2 = scenario_2a()
+
+# Simulation scenario 3
+def scenario_3a():  
+  while True:
+    credit_quiz = input("3. Two months later, your bill is £50 and your friends are inviting you out. Do you go out or use the money to pay your phone bill? (Go out / Pay)").strip().lower()
+    global credit_score
+    if credit_quiz == "pay":
+      credit_score += 200 # Add 100 to credit score
+      print(f"Congratulations, your credit score is now {credit_score}.")
+      print("Paying your phone bill on time maintains your good payment history, improving your credit score.")
+      break
+
+      # Cap credit score
+      if credit_score > 999:
+        credit_score = 999
+
+      if credit_score == 999:
+          print("You have reached the highest level. Your credit score has reached 999. Well done on your excellent credit score.")
+          break
+      
+    elif credit_quiz == "go out":
+      credit_score -= 100
+      print(f" Your credit score is {credit_score}.")
+      print("Choosing to go out and neglecting the bill can lead to a missed payment, negatively impacting your credit score.")
+      break
+    else:
+      print("Invalid input. Please select one of the options")
+
+scenario_3 = scenario_3a()
+
+# Simulation scenario 4 
+def scenario_4a():  # Credit score function, loop and quiz
+  while True:
+
+    credit_quiz = input("4. You receive an offer for a new credit card that offers interest free payment if paid off on time. Do you accept the offer or decline it? (Accept / Decline)").strip().lower()
+
+    global credit_score
+
+    if credit_quiz == "accept":
+      credit_score += 200 # Add 100 to credit score
+      print(f"Congratulations, your credit score is now {credit_score}.")
+      print("Accepting a new credit card can diversify your credit mix but may also increase the temptation to spend. Be wary.")
+      break
+
+      # Cap credit score
+      if credit_score > 999:
+        credit_score = 999
+      
+      if credit_score == 999:
+          print("You have reached the highest level. Your credit score has reached 999. Well done on your excellent credit score.")
+          break
+      
+    elif credit_quiz == "decline":
+      credit_score -= 0
+      print(f" Your credit score is {credit_score}.")
+      print("Declining the offer keeps your current credit profile unchanged, maintaining your existing score")
+      break
+    else:
+      print("Invalid input. Please select one of the options")
+
+scenario_4 = scenario_4a()
+
+
+# Simulation scenario 5 
+def scenario_5a():  # Credit score function, loop and quiz
+  while True:
+    credit_quiz = input("5. You receive a bonus at work. Do you use it to pay off a portion of your credit card debt or spend it on a vacation? (Pay off / Vacation)").strip().lower()
+
+    global credit_score
+
+    if credit_quiz == "pay off":
+      credit_score += 200 # Add 200 to credit score
+      print(f"Congratulations, your credit score is now {credit_score}.")
+      print("Paying off credit card debt reduces your utilisation thus your credit score")
+      break
+    
+      # Cap credit score
+      if credit_score > 999:
+        credit_score = 999
+
+      if credit_score == 999:
+          print("You have reached the highest level. Your credit score has reached 999. Well done on your excellent credit score.")
+          break
+
+    elif credit_quiz == "vacation":
+      credit_score -= 100
+      print(f" Your credit score is {credit_score}.")
+      print("Using the bonus for non-essential spending misses a chance to reduce debt")
+      print("High credit card debt keeps your credit utilization high, hurting your score")
+      break
+    else:
+      print("Invalid input. Please select one of the options")
+
+scenario_5 = scenario_5a()
+
+
+# Simulation scenario 6 
+def scenario_6a():  # Credit score function, loop and quiz
+  while True:
+    credit_quiz = input("6. You have the opportunity to dispute an incorrect late payment mark on your credit report. Do you dispute it or leave it as is (Dispute / Leave))").strip().lower()
+
+    global credit_score
+
+    if credit_quiz == "dispute":
+      credit_score += 100 # Add 100 to credit score
+      print(f"Congratulations, your credit score is now {credit_score}.")
+      print("Successfully disputing and removing the incorrect late payment can lead to a significant increase in your credit score.")
+      break
+
+      # cap credit score
+      if credit_score > 999:
+        credit_score = 999
+
+      if credit_score == 999:
+          print("You have reached the highest level. Your credit score has reached 999. Well done on your excellent credit score.")
+          break
+      
+    elif credit_quiz == "leave":
+      credit_score -= 50
+      print(f" Your credit score is {credit_score}.")
+      print(" If the incorrect information is not disputed, it remains on your credit report, potentially leading to a decrease in your credit score over time due to the negative mark.")
+      break
+    else:
+      print("Invalid input. Please select one of the options")
+
+scenario_6 = scenario_6a()
+
+
+# Simulation scenario 7 
+def scenario_7a():  # Credit score function, loop and quiz
+  while True:
+    credit_quiz = input("7. You have the option to set up automatic payments for all your bills. Do you set them up or continue paying manually? (Set up / Manual)").strip().lower()
+
+    global credit_score
+
+    if credit_quiz == "set up":
+      credit_score += 50 # Add 50 to credit score
+      print(f"Congratulations, your credit score is now {credit_score}.")
+      print("Automatic payments ensure that all bills are paid on time, which consistently benefits your payment history and overall credit score.")
+      break
+
+      # cap credit score
+      if credit_score > 999:
+        credit_score = 999
+
+        if credit_score == 999:
+          print("You have reached the highest level. Your credit score has reached 999. Well done on your excellent credit score.")
+          break
+      
+
+      elif credit_quiz == "manual":
+        credit_score -= 0
+        print(f" Your credit score is {credit_score}.")
+        print("Continuing to pay manually increases the risk of missing payments, which could harm your credit score.")
+        break
+
+    else:
+      print("Invalid input. Please select one of the options")
+        
+scenario_7 = scenario_7a()
+
+# Simulation scenario 8
+def scenario_8a():  # Credit score function, loop and quiz
+  while True:
+    credit_quiz = input("9. You've been offered a job in another city, but you've only been at your current address for a year. Do you stay at your current address or move? (Stay / Move)").strip().lower()
+
+    global credit_score
+
+    if credit_quiz == "stay":
+      credit_score += 50  # Add 100 to credit score for stability
+      if credit_score > 999:
+        credit_score = 999  # Cap credit score at 999
+
+      print(f"Congratulations, your credit score is now {credit_score}.")
+      print("Staying at the same address for over a year demonstrates stability, which positively affects your credit score.")
+      
+      if credit_score == 999:
+        print("You have reached the highest level. Your credit score has reached 999. Well done on your excellent credit score.")
+      break
+
+    elif credit_quiz == "move":
+      print(f" Your credit score remains at {credit_score}.")
+      print("Moving frequently can be seen as a risk factor by lenders, but your score remains unchanged for now.")
+      break
+
+    else:
+      print("Invalid input. Please select one of the options.")
+        
+scenario_8 = scenario_8a()
